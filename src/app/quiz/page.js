@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function QuizPage() {
+export default function Page() {
   return (
     <div>クイズページ</div>
   )
