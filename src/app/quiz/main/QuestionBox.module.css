@@ -1,0 +1,49 @@
+.questionBox {
+  flex:10;
+  position: relative;
+
+  width: 98%;
+  margin-bottom: 1%;
+  padding: 10px 30px;
+
+  border: 7px solid rgb(59, 56, 56);
+  background-color: rgba(212, 212, 206, 0.6);
+  border-radius: 5px;
+
+  font-size: clamp(16px, 2vw, 32px);
+  color: rgb(20, 20, 20);
+}
+
+.questionBox::before,
+.questionBox::after,
+.questionBox span::before,
+.questionBox span::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #333;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  opacity: 0.8;
+}
+
+.questionBox::before {
+  top: 8px;
+  left: 8px;
+}
+
+.questionBox::after {
+  top: 8px;
+  right: 8px;
+}
+
+.questionBox span::before {
+  bottom: 8px;
+  left: 8px;
+}
+
+.questionBox span::after {
+  bottom: 8px;
+  right: 8px;
+}
