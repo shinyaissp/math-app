@@ -2,6 +2,9 @@
 
 import { useRef, useEffect, useCallback } from "react";
 import styles from "./page.module.css";
+import GameArea from "../../../../components/GameArea/GameArea";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Page() {
   const canvasRef = useRef(null);
@@ -73,15 +76,29 @@ export default function Page() {
   }, [draw]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", padding: "2rem" }}>
-      <canvas
-        ref={canvasRef}
-        id="myCanvas"
-        width={600}
-        height={600}
-        onClick={draw}
-        className={styles.canvas}
-      />
-    </div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="prob"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <GameArea>
+          <div className={styles.container}>
+            <Link href="../prob">HOME </Link>
+            <div>BIRTHDAY</div>
+            <canvas
+              ref={canvasRef}
+              id="myCanvas"
+              width={600}
+              height={600}
+              onClick={draw}
+              className={styles.canvas}
+            />
+          </div>
+        </GameArea>
+      </motion.div>
+    </AnimatePresence>
   );
 }

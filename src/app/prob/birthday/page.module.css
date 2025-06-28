@@ -1,5 +1,20 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  background-color: antiquewhite;
+  color: #202020;
+}
+
 .canvas {
   border: 1px solid #333;
   background: #202020;
+  width: 600;
+  height: 600;
   cursor: pointer;
 }

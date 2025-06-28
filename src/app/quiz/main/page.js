@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { quizData } from '../quizData';
-import Link from 'next/link'
-import GameArea from '../../../../components/GameArea/GameArea'
+import Link from 'next/link';
+import GameArea from '../../../../components/GameArea/GameArea';
 import QuestionBox from './QuestionBox';
 import styles from './page.module.css';
 
