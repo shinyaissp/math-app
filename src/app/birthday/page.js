@@ -2,8 +2,7 @@
 
 import { useRef, useEffect, useCallback } from "react";
 import styles from "./page.module.css";
-import GameArea from "../../../../components/GameArea/GameArea";
-import Link from "next/link";
+import GameArea from "../../../components/GameArea/GameArea";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Page() {
@@ -86,7 +85,6 @@ export default function Page() {
       >
         <GameArea>
           <div className={styles.container}>
-            <Link href="../prob">HOME </Link>
             <div>BIRTHDAY</div>
             <canvas
               ref={canvasRef}
