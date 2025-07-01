@@ -1,78 +1,131 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import styles from "./page.module.css";
 import GameArea from "../../../components/GameArea/GameArea";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Page() {
   const canvasRef = useRef(null);
-  const numLines = 19;
-  const numPoints = 40;
+  const numCols = 30;
+  const numRows = 12;
+  const cellSize = 30;
 
-  const draw = useCallback(() => {
+  const canvasWidth = numCols * cellSize;
+  const canvasHeight = numRows * cellSize;
+
+  const [numPoints, setNumPoints] = useState(40);
+  const [history, setHistory] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 理論確率を計算（360日、少なくとも2人が同じ誕生日である確率）
+  const calcProbability = (people, days) => {
+    if (people > days) return 1;
+    let probNoDup = 1;
+    for (let i = 0; i < people; i++) {
+      probNoDup *= (days - i) / days;
+    }
+    return 1 - probNoDup;
+  };
+  const theoreticalProb = calcProbability(numPoints, 360);
+
+  const currentCount = history[currentIndex]?.count ?? 0;
+
+  const draw = useCallback((pointsFromHistory = null, overrideNumPoints = null, resetHistory = false) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    const width = canvas.width;
-    const height = canvas.height;
-    const cellSize = width / numLines;
 
-    // ランダム点生成
-    const points = Array.from({ length: numPoints }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-    }));
+    const points = pointsFromHistory
+      ? pointsFromHistory
+      : Array.from({ length: overrideNumPoints ?? numPoints }, () => ({
+          x: Math.random() * canvasWidth,
+          y: Math.random() * canvasHeight,
+        }));
 
-    // 各セルに点がいくつあるか
-    const gridCounts = Array.from({ length: numLines }, () =>
-      Array(numLines).fill(0)
+    const gridCounts = Array.from({ length: numRows }, () =>
+      Array(numCols).fill(0)
     );
 
     for (const p of points) {
       const col = Math.floor(p.x / cellSize);
       const row = Math.floor(p.y / cellSize);
-      gridCounts[row][col]++;
+      if (row >= 0 && row < numRows && col >= 0 && col < numCols) {
+        gridCounts[row][col]++;
+      }
     }
 
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // 2つ以上あるセルを塗る
+    // 2つ以上のセルを赤く塗る
     ctx.fillStyle = "rgba(255,0,0,0.3)";
-    for (let row = 0; row < numLines; row++) {
-      for (let col = 0; col < numLines; col++) {
+    let count = 0;
+    for (let row = 0; row < numRows; row++) {
+      for (let col = 0; col < numCols; col++) {
         if (gridCounts[row][col] >= 2) {
           ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+          count++;
         }
       }
     }
 
-    // 格子
+    // 格子線
     ctx.strokeStyle = "gray";
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = 1;
     ctx.beginPath();
-    for (let i = 0; i <= numLines; i++) {
-      const pos = i * cellSize;
-      ctx.moveTo(pos, 0);
-      ctx.lineTo(pos, height);
-      ctx.moveTo(0, pos);
-      ctx.lineTo(width, pos);
+    for (let i = 0; i <= numCols; i++) {
+      const x = i * cellSize;
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvasHeight);
+    }
+    for (let i = 0; i <= numRows; i++) {
+      const y = i * cellSize;
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvasWidth, y);
     }
     ctx.stroke();
 
-    // 点
+    // 点を描画
     ctx.fillStyle = "white";
     for (const p of points) {
       ctx.beginPath();
       ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
       ctx.fill();
     }
-  }, [numLines, numPoints]);
+
+    // 履歴管理
+    if (!pointsFromHistory) {
+      if (resetHistory) {
+        setHistory([{ count, points }]);
+      } else {
+        setHistory(prev => [{ count, points }, ...prev].slice(0, 10));
+      }
+      setCurrentIndex(0);
+    }
+  }, [numCols, numRows, cellSize, numPoints, canvasWidth, canvasHeight]);
 
   useEffect(() => {
     draw();
   }, [draw]);
+
+  const handlePrev = () => {
+    if (currentIndex + 1 < history.length) {
+      const nextIndex = currentIndex + 1;
+      setCurrentIndex(nextIndex);
+      draw(history[nextIndex].points);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex > 0) {
+      const nextIndex = currentIndex - 1;
+      setCurrentIndex(nextIndex);
+      draw(history[nextIndex].points);
+    } else {
+      draw(); // 新規
+    }
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -85,15 +138,86 @@ export default function Page() {
       >
         <GameArea>
           <div className={styles.container}>
-            <div>BIRTHDAY</div>
-            <canvas
-              ref={canvasRef}
-              id="myCanvas"
-              width={600}
-              height={600}
-              onClick={draw}
-              className={styles.canvas}
-            />
+            <div className={styles.container_left}>
+              <div className={styles.title}>ＣＡＬＥＮＤＡＲ</div>
+              <canvas
+                ref={canvasRef}
+                width={canvasWidth}
+                height={canvasHeight}
+                className={styles.canvas}
+                style={{ border: "1px solid #ccc" }}
+              />
+              <div style={{ marginTop: "2rem" }}>
+                <button
+                  onClick={handlePrev}
+                  disabled={currentIndex + 1 >= history.length}
+                  className={styles.button}
+                >
+                  戻る
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={false}
+                  style={{ marginLeft: "5rem" }}
+                  className={styles.button}
+                >
+                  進む
+                </button>
+              </div>
+              <div style={{ marginTop: "1rem", fontSize: "1.5rem", fontWeight: "bold" }}>
+                同じ誕生日がいる確率（理論値）：
+                {(theoreticalProb * 100).toFixed(2)}%
+              </div>
+            </div>
+            <div className={styles.container_right}>
+              <div style={{ marginTop: "1rem" }}>
+                <table className={styles.historyTable}>
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>同じ誕生日（組）</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: 10 }).map((_, i) => {
+                      const item = history[i];
+                      return (
+                        <tr key={i} className={i === currentIndex ? styles.activeRow : ""}>
+                          <td>{i + 1}</td>
+                          <td>{item ? `${item.count}` : "―"}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <div style={{ marginTop: "1.45rem", fontWeight: "bold", fontSize: "1.2rem"}}>
+                クラスの人数: {numPoints}人
+              </div>
+              <div style={{ marginTop: "0.1rem" }}>
+                <button
+                  onClick={() => {
+                    const newN = Math.max(1, numPoints - 1);
+                    setNumPoints(newN);
+                    draw(null, newN, true);
+                  }}
+                  className={styles.classButton}
+                >
+                  −
+                </button>
+                <button
+                  onClick={() => {
+                    const newN = Math.min(50, numPoints + 1);
+                    setNumPoints(newN);
+                    draw(null, newN, true);
+                  }}
+                  style={{ marginLeft: "0.5rem" }}
+                  className={styles.classButton}
+                >
+                  ＋
+                </button>
+              </div>
+            </div>
           </div>
         </GameArea>
       </motion.div>

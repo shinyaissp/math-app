@@ -7,7 +7,7 @@ export default function Header() {
       top: 0,
       left: 0,
       width: '100%',
-      backgroundColor: 'rgb(40, 40, 40)',
+      backgroundColor: 'rgba(40, 40, 40, 0.5)',
       zIndex: 1000,
       color: 'white',
       padding: '1rem'

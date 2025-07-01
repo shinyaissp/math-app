@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column; 
+  flex-direction: row; 
   justify-content: center;
   align-items: center;
   padding: 2rem;
@@ -14,7 +14,91 @@
 .canvas {
   border: 1px solid #333;
   background: #202020;
-  width: 600;
-  height: 600;
+  width: 900;
+  height: 360;
+}
+
+.container_left {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.container_right {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 2rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: bolder;
+}
+
+.comment {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.button {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #333;
+  color: antiquewhite;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.historyTable th,
+.historyTable td {
+  border: 1px solid #252525;
+  padding: 0.2rem;
+  width: 10rem;
+  text-align: center;
+}
+
+.activeRow {
+  background-color: rgba(255, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.historyTable th:first-child,
+.historyTable td:first-child {
+  width: 3rem;
+}
+
+.classButton {
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #555;
+  color: antiquewhite;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.classButton:active {
+  transform: scale(0.95);
 }
