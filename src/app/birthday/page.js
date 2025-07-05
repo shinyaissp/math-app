@@ -18,7 +18,6 @@ export default function Page() {
   const [history, setHistory] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 理論確率を計算（360日、少なくとも2人が同じ誕生日である確率）
   const calcProbability = (people, days) => {
     if (people > days) return 1;
     let probNoDup = 1;
@@ -27,11 +26,12 @@ export default function Page() {
     }
     return 1 - probNoDup;
   };
+
   const theoreticalProb = calcProbability(numPoints, 360);
 
-  const currentCount = history[currentIndex]?.count ?? 0;
+  // const currentCount = history[currentIndex]?.count ?? 0;
 
-  const draw = useCallback((pointsFromHistory = null, overrideNumPoints = null, resetHistory = false) => {
+  const draw = useCallback((pointsFromHistory = null, pointCount = 40, resetHistory = false) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -39,7 +39,7 @@ export default function Page() {
 
     const points = pointsFromHistory
       ? pointsFromHistory
-      : Array.from({ length: overrideNumPoints ?? numPoints }, () => ({
+      : Array.from({ length: pointCount }, () => ({
           x: Math.random() * canvasWidth,
           y: Math.random() * canvasHeight,
         }));
@@ -58,7 +58,6 @@ export default function Page() {
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // 2つ以上のセルを赤く塗る
     ctx.fillStyle = "rgba(255,0,0,0.3)";
     let count = 0;
     for (let row = 0; row < numRows; row++) {
@@ -70,7 +69,6 @@ export default function Page() {
       }
     }
 
-    // 格子線
     ctx.strokeStyle = "gray";
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -86,7 +84,6 @@ export default function Page() {
     }
     ctx.stroke();
 
-    // 点を描画
     ctx.fillStyle = "white";
     for (const p of points) {
       ctx.beginPath();
@@ -94,7 +91,6 @@ export default function Page() {
       ctx.fill();
     }
 
-    // 履歴管理
     if (!pointsFromHistory) {
       if (resetHistory) {
         setHistory([{ count, points }]);
@@ -103,11 +99,11 @@ export default function Page() {
       }
       setCurrentIndex(0);
     }
-  }, [numCols, numRows, cellSize, numPoints, canvasWidth, canvasHeight]);
+  }, [numCols, numRows, cellSize, canvasWidth, canvasHeight]);
 
   useEffect(() => {
-    draw();
-  }, [draw]);
+    draw(null, numPoints, true);
+  }, []);
 
   const handlePrev = () => {
     if (currentIndex + 1 < history.length) {
@@ -123,7 +119,7 @@ export default function Page() {
       setCurrentIndex(nextIndex);
       draw(history[nextIndex].points);
     } else {
-      draw(); // 新規
+      draw(null, numPoints);
     }
   };
 
@@ -165,8 +161,8 @@ export default function Page() {
                 </button>
               </div>
               <div style={{ marginTop: "1rem", fontSize: "1.5rem", fontWeight: "bold" }}>
-                同じ誕生日がいる確率（理論値）：
-                {(theoreticalProb * 100).toFixed(2)}%
+                同じ誕生日がいる確率：
+                <p style={{ display: "inline", fontSize: "2.2rem"}}>{(theoreticalProb * 100).toFixed(0)}</p> %
               </div>
             </div>
             <div className={styles.container_right}>

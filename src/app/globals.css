@@ -25,3 +25,12 @@
 :root a {
   display: block;
 }
+
+.grid {
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  gap: 20px;
+  justify-content: center; /* これで中央寄せ */
+  padding: 20px;
+}

@@ -1,13 +1,23 @@
+// page.jsx
 import Link from 'next/link';
+import Card from '../../components/Card/Card';
+
 
 export default function Page() {
   return (
     <div id="root">
-      <Link href="/birthday">BIRTHDAY</Link>
-      <Link href="/quiz">QUIZ</Link>
+      <div className='grid'>
+        <Link href="/birthday">
+          <Card imageUrl="/birthdayTop.png" alt="birthday">BIRTHDAY</Card>
+        </Link>
+        <Link href="/quiz">
+          <Card imageUrl="/sea.jpg" alt="birthday">QUIZ</Card>
+        </Link>
+      </div>
     </div>
   );
 }
+
 
 // export default async function Page() {
 //   // テスト用に3秒待つ
