@@ -35,7 +35,7 @@ const GameArea = ({ imageUrl, children }) => {
       style={{
         width: `${dimensions.width}px`,
         height: `${dimensions.height}px`,
-        backgroundImage: imageUrl ? `url(${imageUrl})` : 'none',
+        backgroundImage: imageUrl ? `url(${imageUrl})` : "none"
       }}
     >
       {children}

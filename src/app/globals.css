@@ -1,16 +1,33 @@
 @import "tailwindcss";
 
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+html, body {
+  font-family:
+    "Segoe UI",
+    "ヒラギノ丸ゴ ProN",
+    "Hiragino Maru Gothic Pro",
+    "メイリオ",
+    "Yu Gothic",
+    "游ゴシック",
+    "ＭＳ Ｐゴシック",
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+:root {  
   display: flex;
   justify-content: center; 
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; 
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -26,11 +43,18 @@
   display: block;
 }
 
+.app_title{
+  font-size: 3rem;
+  text-align: center;
+
+  margin: 10%;
+}
+
 .grid {
   font-family: sans-serif;
   display: grid;
   grid-template-columns: repeat(2, 300px);
   gap: 20px;
-  justify-content: center; /* これで中央寄せ */
+  justify-content: center;
   padding: 20px;
 }
