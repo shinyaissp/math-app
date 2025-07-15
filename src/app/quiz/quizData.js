@@ -1,6 +1,6 @@
 export const quizData = [
   {
-    question: '問1. とある洞窟の中、道は、左、真ん中、右に分岐している。',
+    question: '問1. 3匹の大蛇が住んでいる。とある洞窟。道が、左、真ん中、右に分岐している。',
     options: ['左へ進む', '前方へ進む', '右へ進む'],
     correctIndex: 0,
     probability_A: 1/3,

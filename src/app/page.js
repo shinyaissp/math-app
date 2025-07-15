@@ -6,7 +6,7 @@ import Card from '../../components/Card/Card';
 export default function Page() {
   return (
     <div id="root">
-      <div className='app_title'>◆ LogiCafe ◆</div>
+      <div className='app_title'>◆ MATH APP ◆</div>
       <div className='grid'>
         <Link href="/birthday">
           <Card imageUrl="/birthdayTop.png" alt="birthday"
