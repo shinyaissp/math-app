@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useCallback, useState } from "react";
 import styles from "./page.module.css";
-import GameArea from "../../../components/GameArea/GameArea";
+import GameArea from "@/components/GameArea/GameArea";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Page() {

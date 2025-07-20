@@ -1,0 +1,61 @@
+.buttonDefault {
+  color: #272727;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  background-color: rgba(184, 184, 184, 0.5);
+}
+
+.buttonDefault:hover {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+/* 初期状態 */
+.buttonBased {
+  background-color: rgba(184, 184, 184, 0.5);
+  color: #272727;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* 選択時 */
+.buttonSelected {
+  background-color: rgba(206, 135, 135, 0.78);
+  border: 2px solid pink;
+  color: #272727;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* 当たり or 明かされたとき */
+.buttonRevealed {
+  background-color: rgba(100, 100, 100, 0.9);
+  border: 2px solid black;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  border: none;
+}

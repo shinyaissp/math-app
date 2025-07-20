@@ -1,6 +1,6 @@
 // page.jsx
 import Link from 'next/link';
-import Card from '../../components/Card/Card';
+import Card from '@/components/Card/Card';
 
 
 export default function Page() {
