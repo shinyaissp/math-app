@@ -39,7 +39,7 @@ export default function Page() {
   const {
     selected, 
     handleSelect, resetSelected,
-  } = useNomalQuestion({ setMessage, setFairyCount});
+  } = useNomalQuestion({ setMessage, setFairyCount, currentQuestionIndex});
   // 四問目 useTreasuresQuestion
   const {
     treasures, treasuresSelected, treasuresRevealed,treasuresFinalChoice,
@@ -68,10 +68,16 @@ export default function Page() {
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
-        <div style={{ position: 'absolute', top: 20, right: 30, zIndex: 10, fontWeight: 'bold', fontSize: '1.2rem', background: 'rgba(255, 255, 255, 0.36)', padding: '8px 16px', borderRadius: '16px' }}>
-          妖精: {fairyCount}
-        </div>
         <GameArea imageUrl={images[bgIndex]}>
+          <div className={styles.questionNumberBox}>
+            第 {currentQuestionIndex + 1} 問
+          </div>
+
+          <div className={styles.statusBox}>
+            {`正解： ${correctCount[0].filter(Boolean).length}`}<br />
+            {`判断： ${correctCount[1].filter(Boolean).length}`}<br />
+            {`妖精： ${fairyCount}`}
+          </div>
           <div className={styles.answereBox}>
             {currentQuiz.options.map((option, i) => (
               <QuizButton
@@ -148,7 +154,7 @@ export default function Page() {
                 {treasures.map((_, i) => (!treasuresRevealed.includes(i) && (
                     <AdditionalQuizButton key={i} onClick={() => handleTreasureDecision(i)}
                     >
-                      {`選択肢 ${i + 1}`}
+                    {`宝箱 ${["A", "B", "C", "D"][i]}`}
                     </AdditionalQuizButton>
                   )
                 ))}
@@ -177,9 +183,12 @@ export default function Page() {
             </motion.div>
           )}
           <QuestionBox className={styles.questionBox}>
-            {currentQuiz.question}<br />
-            {`上手くいった数： ${correctCount[0].filter(Boolean).length}`}<br />
-            {`正しい判断： ${correctCount[1].filter(Boolean).length}`}
+            {currentQuiz.question.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </QuestionBox>
         </GameArea>
       </motion.div>

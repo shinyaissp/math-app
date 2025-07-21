@@ -6,12 +6,13 @@
   margin-bottom: 1%;
   padding: 10px 30px;
 
-  border: 7px solid rgb(59, 56, 56);
+  border: 7px solid rgb(39, 39, 39);
   background-color: rgba(212, 212, 206, 0.6);
   border-radius: 5px;
 
   font-size: clamp(16px, 2vw, 32px);
-  color: rgb(20, 20, 20);
+  font-weight: 600;
+  color: #222;
 }
 
 .questionBox::before,
