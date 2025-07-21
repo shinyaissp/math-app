@@ -1,0 +1,26 @@
+.title {
+  font-size: 3rem;
+  color:antiquewhite; 
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.buttonDefault {
+  color: #1b1b1b;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  background-color: rgba(190, 190, 190, 0.65);
+}
+
+.buttonDefault:hover {
+  background-color: rgba(200, 200, 200, 0.8);
+}
