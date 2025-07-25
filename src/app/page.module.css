@@ -1,0 +1,50 @@
+.app_title{
+  font-size: 3rem;
+  text-align: center;
+  margin: 60px 0 20px 0;
+}
+
+.pc_grid {
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.sm_grid{
+  display: none;
+}
+
+/* スマホ（640px未満）で非表示にする */
+@media (max-width: 639px) {
+  .pc_grid {
+    display: none;
+  }
+
+  .sm_grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sm_grid a{
+    display: inline-block;
+    height: auto;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  .app_title{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0 20px 0;
+  }
+
+}
+
+
+

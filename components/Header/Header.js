@@ -1,20 +1,20 @@
 import Link from 'next/link';
+import styles from './Header.module.css';
 
 export default function Header() {
   return (
-    <header style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      backgroundColor: 'rgba(40, 40, 40, 0.5)',
-      zIndex: 1000,
-      color: 'white',
-      padding: '1rem'
-    }}>
-      <nav>
-        <Link href="/">Home</Link>
-      </nav>
-    </header>
+    <>
+      {/* PC用ヘッダー */}
+      <header className={styles.header}>
+        <nav>
+          <Link href="/">Home</Link>
+        </nav>
+      </header>
+
+      {/* スマホ用画面左下ボタン */}
+      <Link href="/" className={styles.mobileHomeBtn}>
+        Home
+      </Link>
+    </>
   );
 }

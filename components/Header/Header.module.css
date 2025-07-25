@@ -1,0 +1,47 @@
+/* 共通のヘッダースタイル（PC用など） */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(40, 40, 40, 0.5);
+  z-index: 1000;
+  color: white;
+  padding: 1rem;
+}
+
+/* スマホ用固定ボタン */
+.mobileHomeBtn {
+  display: none;
+  position: fixed;
+  bottom: 12px;   /* 下からの距離を少し狭く */
+  left: 12px;     /* 左からの距離も狭く */
+  background-color: rgba(40, 40, 40, 0.8);
+  color: antiquewhite;
+  padding: 0.4rem 0.8rem;   /* パディングを小さく */
+  border-radius: 9999px;
+  font-weight: bold;
+  font-size: 0.85rem;       /* フォントサイズを少し小さく */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 1100;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.mobileHomeBtn:hover {
+  background-color: rgba(60, 60, 60, 0.9);
+}
+
+/* 画面幅640px以下で表示 */
+@media (max-width: 639px) {
+  .mobileHomeBtn {
+    display: block;
+  }
+  
+  /* PC用ヘッダーは非表示にしてもいい */
+  .header {
+    display: none;
+  }
+}
