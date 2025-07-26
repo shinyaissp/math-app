@@ -1,0 +1,19 @@
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  /* 中心を基準に配置したいのでtransform originを中央に */
+  transform-origin: center;
+}

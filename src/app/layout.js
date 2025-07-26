@@ -1,4 +1,5 @@
 import Header from "../../components/Header/Header";
+import AnimatedBackground from '@/components/AnimatedBackground/AnimatedBackground';
 import "./globals.css";
 
 export const metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body>
         <Header></Header>
+        <AnimatedBackground />
         {children}
       </body>
     </html>
