@@ -31,6 +31,7 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+
 }
 
 .title {
@@ -39,12 +40,14 @@
   font-weight: bolder;
 }
 
+
 .button {
   padding: 0.5rem 2rem;
+  margin-top: 2rem;
   font-size: 1rem;
   font-weight: bold;
   background-color: #333;
-  color: antiquewhite;
+  color: rgb(238, 238, 238);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -55,12 +58,24 @@
   transform: scale(0.95);
 }
 
+.birthdayComment {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.birthdayComment p {
+  display: inline;
+  font-size: 2.2rem;
+}
+
 .historyTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: bold;
+  background-color: rgb(250, 241, 228);
 }
 
 .historyTable th,
@@ -81,11 +96,13 @@
 }
 
 .classButton {
+  height: 40px;
+  width: 40px;
   padding: 0.3rem 0.7rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   background-color: #555;
-  color: antiquewhite;
+  color: rgb(238, 238, 238);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -100,35 +117,80 @@
 /* ▼ スマホ対応 */
 @media (max-width: 768px) {
   .container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
-    align-items: stretch;
-    min-height: auto;
+    background-color: antiquewhite;
+    color: #202020;
+    box-sizing: border-box;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bolder;
   }
 
   .canvas {
-    width: 100%;
-    height: auto;
+    width: 90vw;
   }
 
   .container_left,
   .container_right {
     width: 100%;
-    padding: 1rem;
+    padding: 0rem;
   }
 
-  .title {
-    font-size: 1.4rem;
-    text-align: center;
+  .button {
+    margin-top: 1.2rem;
+    padding: 0.5rem 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+  }
+  .birthdayComment {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
-  .button,
-  .classButton {
-    font-size: 0.9rem;
-    padding: 0.4rem 1.2rem;
+  .birthdayComment p {
+    display: inline;
+    font-size: 1.8rem;
   }
 
   .historyTable {
-    font-size: 0.85rem;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(250, 241, 228);
+  }
+
+  .historyTable th,
+  .historyTable td {
+    border: 1px solid #252525;
+    padding: 0.2rem;
+    text-align: center;
+    width: 25px;
+  }
+
+  .activeCell {
+    background-color: rgba(255, 0, 0, 0.1);
+    font-weight: bold;
+  }
+
+  .historyTable th:first-child,
+  .historyTable td:first-child {
+    width: 5rem;
   }
 }

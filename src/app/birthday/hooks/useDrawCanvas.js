@@ -63,10 +63,12 @@ export default function useDrawCanvas ({
     }
     ctx.stroke();
 
+    const pointRadius = Math.max(cellSize * 0.1, 2); // 小さすぎないように最低1pxに制限
+    
     ctx.fillStyle = "white";
     for (const p of points) {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, pointRadius, 0, Math.PI * 2);
       ctx.fill();
     }
 

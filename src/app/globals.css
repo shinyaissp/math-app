@@ -26,8 +26,6 @@ html, body {
 /* 実質html */
 :root {  
   display: flex;
-  justify-content: center; 
-  align-items: center;
   flex-direction: column;
   height: 100vh;
 

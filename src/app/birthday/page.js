@@ -19,14 +19,16 @@ const calcProbability = (people, days) => {
 export default function Page() {
   const numCols = 30;
   const numRows = 12;
-  const cellSize = 30;
-  const canvasHeight = numRows * cellSize;
+  const [cellSize, setCellSize] = useState(30);
   const canvasRef = useRef(null);
+  const [canvasHeight, setCanvasHeight] = useState(numRows * cellSize);
   const [canvasWidth, setCanvasWidth] = useState(numCols * cellSize);
   const [history, setHistory] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numPoints, setNumPoints] = useState(40);
-  const theoreticalProb = calcProbability(numPoints, 360);  
+  const theoreticalProb = calcProbability(numPoints, 360);
+  const [isMobile, setIsMobile] = useState(false);
+
   const { draw } = useDrawCanvas({
     numCols,
     numRows,
@@ -39,14 +41,31 @@ export default function Page() {
   });
 
   useEffect(() => {
-    const updateCanvasWidth = () => {
-      const maxWidth = window.innerWidth < 768 ? window.innerWidth - 32 : numCols * cellSize;
-      setCanvasWidth(Math.min(maxWidth, numCols * cellSize));
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const updateCanvasSize = () => {
+      const isMobile = window.innerWidth < 768;
+      const maxCanvasWidth = isMobile ? window.innerWidth - 32 : numCols * 30;
+
+      const width = Math.min(maxCanvasWidth, numCols * 30);
+      const newCellSize = width / numCols;
+      const newCanvasHeight = newCellSize * numRows;
+
+      setCellSize(newCellSize);
+      setCanvasWidth(width);
+      setCanvasHeight(newCanvasHeight);
     };
 
-    updateCanvasWidth();
-    window.addEventListener("resize", updateCanvasWidth);
-    return () => window.removeEventListener("resize", updateCanvasWidth);
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+    return () => window.removeEventListener("resize", updateCanvasSize);
   }, []);
 
   useEffect(() => {
@@ -77,14 +96,14 @@ export default function Page() {
         <GameArea>
           <div className={styles.container}>
             <div className={styles.container_left}>
-              <div className={styles.title}>ＣＡＬＥＮＤＡＲ</div>
+              <div className={styles.title}>縦 １２（月）× 横 ３０（日）</div>
               <canvas
                 ref={canvasRef}
                 width={canvasWidth}
                 height={canvasHeight}
                 className={styles.canvas}
               />
-              <div style={{ marginTop: "2rem" }}>
+              <div>
                 <button
                   onClick={handlePrev}
                   disabled={currentIndex + 1 >= history.length}
@@ -100,37 +119,66 @@ export default function Page() {
                   進む
                 </button>
               </div>
-              <div style={{ marginTop: "1rem", fontSize: "1.5rem", fontWeight: "bold" }}>
+              <div className={styles.birthdayComment}>
                 同じ誕生日がいる確率：
-                <p style={{ display: "inline", fontSize: "2.2rem"}}>{(theoreticalProb * 100).toFixed(0)}</p> %
+                <p>{(theoreticalProb * 100).toFixed(0)}</p> %
               </div>
             </div>
             <div className={styles.container_right}>
               <div style={{ marginTop: "1rem" }}>
-                <table className={styles.historyTable}>
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>同じ誕生日（組）</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Array.from({ length: 10 }).map((_, i) => {
-                      const item = history[i];
-                      return (
-                        <tr key={i} className={i === currentIndex ? styles.activeRow : ""}>
-                          <td>{i + 1}</td>
-                          <td>{item ? `${item.count}` : "―"}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                {isMobile ? (
+                  // 横向き（スマホ）
+                  <table className={styles.historyTable}>
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        {Array.from({ length: 10 }).map((_, i) => (
+                          <th key={i}>{i + 1}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>同じ<br/>誕生日</td>
+                        {Array.from({ length: 10 }).map((_, i) => {
+                          const item = history[i];
+                          const isActive = i === currentIndex;
+                          return (
+                            <td key={i} className={isActive ? styles.activeCell : ""}>
+                              {item ? item.count : "―"}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    </tbody>
+                  </table>
+                ) : (
+                  // 通常（PC）
+                  <table className={styles.historyTable}>
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>同じ誕生日（組）</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Array.from({ length: 10 }).map((_, i) => {
+                        const item = history[i];
+                        return (
+                          <tr key={i} className={i === currentIndex ? styles.activeRow : ""}>
+                            <td>{i + 1}</td>
+                            <td>{item ? `${item.count}` : "―"}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
               </div>
               <div style={{ marginTop: "1.45rem", fontWeight: "bold", fontSize: "1.2rem"}}>
                 クラスの人数: {numPoints}人
               </div>
-              <div style={{ marginTop: "0.1rem" }}>
+              <div style={{ marginTop: "0.3rem" }}>
                 <button
                   onClick={() => {
                     const newN = Math.max(1, numPoints - 1);

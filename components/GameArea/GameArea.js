@@ -34,15 +34,17 @@ const GameArea = ({ imageUrl, children }) => {
   return (
     <>
       {!isMobile && (
-        <div
-          className={styles.gameArea}
-          style={{
-            width: `${dimensions.width}px`,
-            height: `${dimensions.height}px`,
-            backgroundImage: imageUrl ? `url(${imageUrl})` : "none"
-          }}
-        >
-          {children}
+        <div className={styles.wrapper}>
+          <div
+            className={styles.gameArea}
+            style={{
+              width: `${dimensions.width}px`,
+              height: `${dimensions.height}px`,
+              backgroundImage: imageUrl ? `url(${imageUrl})` : "none"
+            }}
+          >
+            {children}
+          </div>
         </div>
       )}
 
