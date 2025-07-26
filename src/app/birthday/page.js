@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./page.module.css";
 import GameArea from "@/components/GameArea/GameArea";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { fade } from "@/animation/fade";
 import { motion, AnimatePresence } from "framer-motion";
 import useDrawCanvas from "./hooks/useDrawCanvas";
@@ -27,7 +28,7 @@ export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numPoints, setNumPoints] = useState(40);
   const theoreticalProb = calcProbability(numPoints, 360);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
   const { draw } = useDrawCanvas({
     numCols,
@@ -39,15 +40,6 @@ export default function Page() {
     setHistory,
     setCurrentIndex,
   });
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   useEffect(() => {
     const updateCanvasSize = () => {
@@ -97,12 +89,7 @@ export default function Page() {
           <div className={styles.container}>
             <div className={styles.container_left}>
               <div className={styles.title}>縦 １２（月）× 横 ３０（日）</div>
-              <canvas
-                ref={canvasRef}
-                width={canvasWidth}
-                height={canvasHeight}
-                className={styles.canvas}
-              />
+              <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} className={styles.canvas}/>
               <div>
                 <button
                   onClick={handlePrev}

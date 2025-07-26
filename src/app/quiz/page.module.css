@@ -6,6 +6,11 @@
   font-weight: bold;
 }
 
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .buttonDefault {
   color: #1b1b1b;
   font-size: 1.2rem;
@@ -23,4 +28,11 @@
 
 .buttonDefault:hover {
   background: rgba(240, 245, 255, 0.9);
+}
+
+/* ▼ スマホ対応 */
+@media (max-width: 768px) {
+  .title {
+    height: 40vh;
+  }
 }

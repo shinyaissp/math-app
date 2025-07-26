@@ -48,3 +48,55 @@
   bottom: 8px;
   right: 8px;
 }
+
+
+/* ▼ スマホ対応 */
+@media (max-width: 768px) {
+  .questionBox {
+    flex:10;
+    position: relative;
+    width: 100vw;
+    margin-bottom: 1%;
+    padding: 10px 10px;
+    border: 2px solid rgb(39, 39, 39);
+    background: rgba(240, 245, 255, 0.7);
+    border-radius: 2px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .questionBox::before,
+  .questionBox::after,
+  .questionBox span::before,
+  .questionBox span::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    opacity: 0.8;
+  }
+
+  .questionBox::before {
+    top: 2px;
+    left: 2px;
+  }
+
+  .questionBox::after {
+    top: 2px;
+    right: 2px;
+  }
+
+  .questionBox span::before {
+    bottom: 2px;
+    left: 2px;
+  }
+
+  .questionBox span::after {
+    bottom: 2px;
+    right: 2px;
+  }
+}

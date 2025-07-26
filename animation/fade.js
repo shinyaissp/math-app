@@ -4,3 +4,10 @@ export const fade = {
   exit: { opacity: 0 },
   transition: { duration: 0.5 },
 };
+
+export const fadeWithLeave = (isLeaving = false) => ({
+  initial: { opacity: 0 },
+  animate: isLeaving ? { opacity: 0 } : { opacity: 1 },
+  exit: { opacity: 0 },
+  transition: { duration: 1 },
+});
