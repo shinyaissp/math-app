@@ -2,7 +2,7 @@ import React from 'react'
 import Image from "next/image";
 import styles from './Card.module.css';
 
-export default function Card({ imageUrl, alt, title , content }) {
+export default function Card({ imageUrl, alt, title, content, category}) {
   return (
   <>
     <div className={styles.sm}>
@@ -14,13 +14,15 @@ export default function Card({ imageUrl, alt, title , content }) {
           <div className={styles.cardTitle}>{title}</div>
           <div className={styles.cardContent}>{content}</div>
         </div>
+        <div className={styles.cardCategory}>{category}</div>
       </div>
     </div>
     <div className={styles.pc}>
       <div className={styles.card}>
         <Image src={imageUrl} alt={alt} width={300} height={200} priority/>
-        <div className={styles.cardTitle}>{ title }</div>
+        <div className={styles.cardTitle}>{title}</div>
         <div className={styles.cardContent}>{ content }</div>
+        <div className={styles.cardCategory}>{category}</div>
       </div>
     </div>
   </>
