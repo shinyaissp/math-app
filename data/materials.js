@@ -1,10 +1,19 @@
 export const materials = [
   {
+    id: "trig_quiz", 
+    href: "/trigQuiz",
+    imageUrl: "/trigonometoric.jpg",
+    alt: "trig_quiz",
+    title: "三角比タイムアタック",
+    content: "連続で出題される三角比に解答！",
+    category: "図形と計量",
+  },
+  {
     id: "prob_quiz",
     href: "/quiz",
     imageUrl: "/sea.jpg",
     alt: "quiz",
-    title: "QUIZ",
+    title: "ベイズ・クイズ",
     content: "条件付確率/ベイズの定理のクイズ",
     category: "確率",
   },
@@ -13,8 +22,8 @@ export const materials = [
     href: "/birthday",
     imageUrl: "/birthdayTop.png",
     alt: "birthday",
-    title: "BIRTHDAY",
+    title: "誕生日の確率",
     content: "同じクラスで同じ誕生日がいる確率は？",
     category: "確率",
-  },
+  }, 
 ];

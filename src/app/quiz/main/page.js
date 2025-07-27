@@ -16,7 +16,7 @@ import QuizButton from "../components/QuizButton";
 import styles from "./page.module.css";
 import AdditionalQuizButton from "../components/AdditionalQuizButton";
 
-const images = ["/sea.jpg", "/sea.jpg", "/mountain.jpg", "/sea.jpg"];
+const images = ["/cave.jpg", "/plain.jpg", "/mountain.jpg", "/sea.jpg"];
 
 export default function Page() {
   const { correctCount, setCorrectCount } = useQuizContext();

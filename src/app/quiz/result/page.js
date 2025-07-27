@@ -27,8 +27,8 @@ export default function Page() {
           <thead>
             <tr>
               <th>問題</th>
-              <th>正解</th>
-              <th>判断</th>
+              <th>幸運</th>
+              <th>知恵</th>
             </tr>
           </thead>
           <tbody>

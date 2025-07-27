@@ -1,0 +1,17 @@
+/* プログレスバー外枠 */
+.barWrapper {
+  margin-top: 1rem;
+  width: 40vw;
+  height: 20px;
+  background-color: antiquewhite;
+  border: 2px solid rgba(167, 167, 167, 0.9);
+  border-radius: 0.2rem;
+}
+
+/* プログレスバーの中身 */
+.barFill {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(128, 41, 41);
+  transform-origin: right;
+}
