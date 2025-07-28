@@ -1,0 +1,29 @@
+.ProgressBarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  margin-top: 12px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonBox {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.retryButtonWrapper {
+  display: flex;
+  justify-content: center;
+  
+}
+.resultButtonWrapper {
+  display: flex;
+  justify-content: center;
+}

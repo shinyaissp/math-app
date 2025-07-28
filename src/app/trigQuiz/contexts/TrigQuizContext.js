@@ -5,10 +5,10 @@ import React, { createContext, useContext, useState } from 'react';
 const TrigQuizContext = createContext(null);
 
 export const TrigQuizProvider = ({ children }) => {
-  const [correctCount, setCorrectCount] = useState([[],[]]);
+  const [results, setResults] = useState([]); // 各問題の回答記録
 
   return (
-    <TrigQuizContext.Provider value={{ correctCount, setCorrectCount }}>
+    <TrigQuizContext.Provider value={{ results, setResults }}>
       {children}
     </TrigQuizContext.Provider>
   );

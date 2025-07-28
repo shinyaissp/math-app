@@ -1,5 +1,6 @@
 /* プログレスバー外枠 */
 .barWrapper {
+  justify-content: center;
   margin-top: 1rem;
   width: 40vw;
   height: 20px;
