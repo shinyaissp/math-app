@@ -148,19 +148,18 @@ export default function Page() {
       </div>
       <div className={styles.buttonBox}>
         <DefaultButton onClick={() => router.push('/trigQuiz')}>戻る</DefaultButton>
-      {countdownFinished && (
-        <div className={styles.retryButtonWrapper}>
-          <DefaultButton onClick={handleReset}>やり直し</DefaultButton>
-        </div>
-      )}
-
-      {isTimeUp && (
-        <div className={styles.resultButtonWrapper}>
-          <DefaultButton onClick={() => router.push('/trigQuiz/result')}>
-            結果を見る
-          </DefaultButton>
-        </div>
-      )}
+        {countdownFinished && (
+          <div className={styles.retryButtonWrapper}>
+            <DefaultButton onClick={handleReset}>やり直し</DefaultButton>
+          </div>
+        )}
+        {isTimeUp && (
+          <div className={styles.resultButtonWrapper}>
+            <DefaultButton onClick={() => router.push('/trigQuiz/result')}>
+              結果を見る
+            </DefaultButton>
+          </div>
+        )}
       </div>
     </>
   )

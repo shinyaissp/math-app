@@ -45,3 +45,27 @@
   margin: 20px 0;
   font-weight: bold;
 }
+
+/* スマホ向けのレイアウト調整 */
+@media (max-width: 768px) {
+  .title {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    color: rgb(56, 56, 56);
+    font-size: 2rem;
+    background-color: antiquewhite;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .questionBox {
+    width: 90vw; 
+    height: auto;
+  }
+}

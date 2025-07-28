@@ -1,6 +1,7 @@
 .container {
   margin: 2rem auto;
   justify-content: center;
+  place-items: center;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -27,3 +28,20 @@
   opacity: 0.6;
 }
 
+/* スマホ向けのレイアウト調整 */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 6px;
+    max-width: 90vw;
+  }
+  .button {
+    width: 21vw;
+    height: 40px;
+    font-size: 0.6rem;
+  }
+}

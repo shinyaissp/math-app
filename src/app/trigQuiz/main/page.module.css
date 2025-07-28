@@ -9,6 +9,7 @@
 .score {
   display: flex;
   justify-content: center;
+  font-size: 1.5rem;
 }
 
 .buttonBox {
@@ -26,4 +27,20 @@
 .resultButtonWrapper {
   display: flex;
   justify-content: center;
+}
+
+/* スマホ向けのレイアウト調整 */
+@media (max-width: 768px) {
+  .score {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  .buttonBox {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
