@@ -136,7 +136,7 @@ export default function Page() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1 }}
           >
-            <ProgressBar duration={6000} onFinish={handleTimeUp} />
+            <ProgressBar duration={60000} onFinish={handleTimeUp} />
           </motion.div>
         )}
       </div>
