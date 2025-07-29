@@ -1,4 +1,5 @@
 .app_title{
+  display: flex;
   font-size: 3rem;
   text-align: center;
   margin: 60px 0 20px 0;
@@ -15,6 +16,25 @@
 
 .sm_grid{
   display: none;
+}
+.red {
+  color: #ff6b6b;
+  opacity: 0.5;
+}
+
+.yellow {
+  color: #fcd34d;
+  opacity: 0.5;
+}
+
+.green {
+  color: #4ade80;
+  opacity: 0.5;
+}
+
+.blue {
+  color: #60a5fa;
+  opacity: 0.5;
 }
 
 /* スマホ（640px未満）で非表示にする */

@@ -8,9 +8,9 @@ import ProgressBar from '@/components/TimeAttack/ProgressBar'
 import styles from './page.module.css'
 import 'katex/dist/katex.min.css'
 import { BlockMath } from 'react-katex'
+import DefaultButton from '@/components/Button/DefaultButton'
 import AnswerButtons from '../components/AnswerButton'
 import { problemsDeg } from '../constants/problemsDeg'
-import DefaultButton from '@/components/Button/DefaultButton'
 import { useTrigQuizContext } from '../contexts/TrigQuizContext'
 
 const countdownSteps = ['3', '2', '1', 'Start!']

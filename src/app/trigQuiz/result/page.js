@@ -28,7 +28,7 @@ export default function Page() {
           <tr>
             <th>#</th>
             <th>問題</th>
-            <th>あなたの答え</th>
+            <th>解答</th>
             <th>正解</th>
             <th>判定</th>
           </tr>

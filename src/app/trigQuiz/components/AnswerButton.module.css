@@ -24,6 +24,17 @@
   transition: background-color 0.2s ease;
 }
 
+/* ホバー時 */
+.button:hover:not(:disabled) {
+  background-color: rgb(255, 219, 171);
+}
+
+/* 無効状態はホバー効果なし */
+.button:disabled,
+.disabled {
+  opacity: 0.6;
+}
+
 .disabled {
   opacity: 0.6;
 }

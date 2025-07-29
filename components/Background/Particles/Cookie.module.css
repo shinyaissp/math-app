@@ -1,0 +1,41 @@
+.cookie {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 2.5vw;
+  height: 2.5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.2vw;
+  z-index: 10;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.piece:hover {
+  filter: brightness(1.2);
+  opacity: 1;
+}
+
+.red {
+  background-color: #ff6b6b;
+}
+
+.yellow {
+  background-color: #fcd34d;
+}
+
+.green {
+  background-color: #4ade80;
+}
+
+.blue {
+  background-color: #60a5fa;
+}

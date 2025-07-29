@@ -20,15 +20,15 @@ export default function Page() {
         <div className={styles.title}>QUIZ GAME</div>
         {!isMobile && (
           <div className={styles.buttonWrapper}>
-            <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/main')}>START</button>
-            <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/result')}>RESULT</button>
+            <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/main')}>START</button>
+            <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/result')}>RESULT</button>
           </div>
         )}
       </GameArea>
       {isMobile && (
         <div className={styles.buttonWrapper}>
-          <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/main')}>START</button>
-          <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/result')}>RESULT</button>
+          <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/main')}>START</button>
+          <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/result')}>RESULT</button>
         </div>
       )}
     </motion.div>

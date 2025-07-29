@@ -17,7 +17,7 @@ export default function Page() {
   <AnimatePresence mode="wait">
     <motion.div {...fadeWithLeave(isLeaving)}>
       <GameArea>
-        <div className={styles.title}>三角比タイムアタック</div>
+        <div className={styles.title}>タイムアタック<br />( 三角比 )</div>
         {!isMobile && (
           <div className={styles.buttonWrapper}>
             <button className={styles.buttonDefault} onClick={() => fadeNavigate('/trigQuiz/main')}>START</button>

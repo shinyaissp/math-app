@@ -17,18 +17,18 @@
 }
 
 .table {
-text-align: center;
+  text-align: center;
   width: 50vw;
   border-collapse: collapse;
   margin-top: 1.5rem;
   font-size: 1rem;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 1vw rgba(255, 255, 255, 0.1);
 }
 
 .table th {
-  background-color: #333333;
+  background-color: #222222;
   color: #ffffff;
-  padding: 0.75rem;
+  padding: 1.5rem;
   text-align: center;
   font-weight: bold;
   border: 1px solid #444;
@@ -38,13 +38,25 @@ text-align: center;
   padding: 0.75rem;
   text-align: center;
   border: 1px solid #444;
-  background-color: #2e2e2e;
 }
 
-.table tr:nth-child(even) {
+.table tbody tr td:nth-child(3),
+.table tbody tr td:nth-child(4) {
+  font-size: 0.75rem;
+}
+
+.table tbody tr:nth-child(even) {
   background-color: #303030;
 }
 
-.table tr:hover {
-  background-color: #3a3a3a;
+.table tbody tr:nth-child(odd) {
+  background-color: #2a2a2a;
+}
+
+.table tbody tr:hover {
+  background-color: #616161;
+}
+
+.smallMath {
+  background-color: #2e2e2e;
 }

@@ -186,7 +186,7 @@ export default function Page() {
                     <AdditionalQuizButton onClick={nextQuestion}>次の問題へ</AdditionalQuizButton>
                   )}
                   {currentQuestionIndex === 3 && (
-                    <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/result')}>RESULT</button>
+                    <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/result')}>RESULT</button>
                   )}
                 </div>
               </motion.div>
@@ -311,7 +311,7 @@ export default function Page() {
                     <AdditionalQuizButton onClick={nextQuestion}>次の問題へ</AdditionalQuizButton>
                   )}
                   {currentQuestionIndex === 3 && (
-                    <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz/result')}>RESULT</button>
+                    <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz/result')}>RESULT</button>
                   )}
                 </div>
               </motion.div>

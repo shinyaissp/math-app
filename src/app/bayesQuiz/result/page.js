@@ -49,7 +49,7 @@ export default function Page() {
           </tfoot>
         </table>
 
-        <button className={styles.buttonDefault} onClick={() => fadeNavigate('/quiz')}>
+        <button className={styles.buttonDefault} onClick={() => fadeNavigate('/bayesQuiz')}>
           QUIZ TOP
         </button>
 

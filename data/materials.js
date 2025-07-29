@@ -10,7 +10,7 @@ export const materials = [
   },
   {
     id: "prob_quiz",
-    href: "/quiz",
+    href: "/bayesQuiz",
     imageUrl: "/sea.jpg",
     alt: "quiz",
     title: "ベイズ・クイズ",

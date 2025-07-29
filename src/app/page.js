@@ -6,7 +6,13 @@ import { materials } from '@/data/materials';
 export default function Page() {
   return (
     <div id="root">
-      <div className={styles.app_title}>◆ MATH APP ◆</div>
+      <div className={styles.app_title}>
+        <p className={styles.red}> ◆ </p>
+        <p className={styles.yellow}> ◆ </p>
+        MATH APP 
+        <p className={styles.blue}> ◆ </p>
+        <p className={styles.green}> ◆ </p>
+      </div>
         {/* スマホ用（〜640px） */}
         <div className={styles.sm_grid}>
           {materials.map((mat) => (

@@ -1,6 +1,7 @@
+import Cookie from "@/components/Background/Particles/Cookie";
 import Header from "../../components/Header/Header";
-import AnimatedBackground from '@/components/AnimatedBackground/AnimatedBackground';
 import "./globals.css";
+import Particles from "@/components/Background/Particles/Particles";
 
 export const metadata = {
   title: "Math_App",
@@ -12,7 +13,8 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body>
         <Header></Header>
-        <AnimatedBackground />
+        <Particles />
+        <Cookie />
         {children}
       </body>
     </html>
