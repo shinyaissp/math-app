@@ -100,16 +100,9 @@ export default function Page() {
 
     setAskedIds(prev => {
       const newAsked = [...prev, currentProblem.id]
-      const nextProblem = getRandomProblem(problemsDeg, newAsked)
-
-      if (nextProblem) {
-        setCurrentProblem(nextProblem)
-        return newAsked
-      } else {
-        alert(`終了！正解数は${score + (isCorrect ? 1 : 0)}問です。`)
-        resetAll()
-        return []
-      }
+      const nextProblem = getRandomProblem(problemsDeg)
+      setCurrentProblem(nextProblem)
+      return newAsked
     })
   }
 

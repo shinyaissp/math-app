@@ -25,11 +25,11 @@ export default function AnimatedBackground() {
   useEffect(() => {
     const updateLayout = () => {
       if (window.innerWidth < 768) {
-        setCols(6);      // スマホ向け
+        setCols(6);  
         setRows(8);
-        setBoxSize(20);  // 小さく
+        setBoxSize(20);
       } else {
-        setCols(10);     // PC向け
+        setCols(10);
         setRows(6);
         setBoxSize(40);
       }
