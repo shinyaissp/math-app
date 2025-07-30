@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: antiquewhite; 
+  margin-top: 6rem;
+  font-size: 2rem;
+}
+
+.questionBox {
+  margin-top: 1rem;
+  position: relative;
+  width: 40vw;
+  height: 15vw;
+  border-radius: 0.2rem;
+  border: 2px solid rgba(167, 167, 167, 0.9);
+  background-color: antiquewhite;
+  color: rgb(56, 56, 56);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barWrapper {
+  justify-content: center;
+  margin-top: 1rem;
+  width: 40vw;
+  height: 20px;
+  background-color: antiquewhite;
+  border: 2px solid rgba(167, 167, 167, 0.9);
+  border-radius: 0.2rem;
+}
+
+.barFill {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(128, 41, 41);
+  transform-origin: right;
+}
+
+/* スマホ向けのレイアウト調整 */
+@media (max-width: 768px) {
+  .title {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    color: rgb(56, 56, 56);
+    font-size: 2rem;
+    background-color: antiquewhite;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .questionBox {
+    width: 90vw; 
+    height: auto;
+  }
+}
