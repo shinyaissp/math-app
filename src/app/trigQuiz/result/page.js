@@ -15,6 +15,7 @@ export default function Page() {
     const ans = answers.find(a => a.id === id);
     return ans ? ans.latex : id;
   };
+  console.log(results)
 
   const correctCount = results.filter(r => r.isCorrect).length;
 
@@ -38,8 +39,8 @@ export default function Page() {
             <tr key={`result-${r.id}-${i}`}>
               <td>{i + 1}</td>
               <td><BlockMath math={r.question} /></td>
-              <td><BlockMath math={getLatexById(r.selected)} /></td>
-              <td><BlockMath math={getLatexById(r.correct)} /></td>
+              <td><BlockMath math={getLatexById(r.selectedAnswerId)} /></td>
+              <td><BlockMath math={getLatexById(r.correctAnswerId)} /></td>
               <td>{r.isCorrect ? '〇' : '×'}</td>
             </tr>
           ))}

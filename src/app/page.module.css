@@ -17,24 +17,37 @@
 .sm_grid{
   display: none;
 }
+
+.red,
+.yellow,
+.blue,
+.green {
+  opacity: 0.5;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.red:hover,
+.yellow:hover,
+.blue:hover,
+.green:hover {
+  opacity: 1;
+  filter: brightness(1.5);
+}
+
 .red {
   color: #ff6b6b;
-  opacity: 0.5;
 }
 
 .yellow {
   color: #fcd34d;
-  opacity: 0.5;
 }
 
 .green {
   color: #4ade80;
-  opacity: 0.5;
 }
 
 .blue {
   color: #60a5fa;
-  opacity: 0.5;
 }
 
 /* スマホ（640px未満）で非表示にする */

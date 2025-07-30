@@ -16,6 +16,8 @@
   margin-top: 1rem;
   position: relative;
   width: 40vw;
+  font-size: 3rem;
+  font-weight: bold;
   height: 15vw;
   border-radius: 0.2rem;
   border: 2px solid rgba(167, 167, 167, 0.9);
@@ -44,26 +46,46 @@
   transform-origin: right;
 }
 
+.commentBox {
+  min-height: 80px; /* 適切な高さを指定して高さの変動を防ぐ */
+  margin-bottom: 10px;
+}
+
+.comment {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.buttonBox {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 /* スマホ向けのレイアウト調整 */
 @media (max-width: 768px) {
   .title {
     display: none;
   }
 
-  .content {
-    width: 100%;
-    height: 100%;
-    color: rgb(56, 56, 56);
-    font-size: 2rem;
-    background-color: antiquewhite;
-    border-radius: 0.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
   .questionBox {
     width: 90vw; 
-    height: auto;
+    height: 35vw;
+    margin-bottom: 2vw;
+  }
+
+  .barWrapper {
+    margin-top: 0rem;
+    width: 90vw;
+    height: 15px;
+  }
+
+  .barFill {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(128, 41, 41);
+    transform-origin: right;
   }
 }

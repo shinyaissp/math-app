@@ -41,3 +41,9 @@
 }
 
 
+@media (max-width: 768px) {
+  .cookie {
+    width: 35px;
+    height: 35px;
+  }
+}
