@@ -1,7 +1,7 @@
 import React from 'react'
 import { BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
-import styles from './AnswerButton.module.css'
+import styles from './AnswersButton.module.css'
 import answers from '../constants/answers'
 
 export default function AnswerButtons({ onSelect, disabled = false }) {

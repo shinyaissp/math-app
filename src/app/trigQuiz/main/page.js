@@ -1,20 +1,21 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useSearchParams } from 'next/navigation' 
 import TimeAttack from '@/features/TimeAttack/TimeAttack'
 import { useTrigQuizGame } from '@/features/TimeAttack/hooks/useTrigQuizGame'
-import AnswerButtons from '../components/AnswerButton'
+import AnswerButtons from '../components/AnswersButton'
 import { problemsDeg } from '../constants/problemsDeg'
 import { useTrigQuizContext } from '../contexts/TrigQuizContext'
+import { problemsRad } from '../constants/problemsRad'
 
 export default function Page() {
+  const searchParams = useSearchParams()
+  const type = searchParams.get('type')
+  const category = searchParams.get('category') || ''
+  const problems = type === 'rad' ? problemsRad : problemsDeg
   const [isRunning, setIsRunning] = useState(false)
-  const {
-    results,
-    addAnswerRecord,
-    resetResults,
-  } = useTrigQuizContext()
-
+  const {results, addAnswerRecord, resetResults, } = useTrigQuizContext()
   const {
     selectedProblem,
     questionIndex,
@@ -23,8 +24,8 @@ export default function Page() {
     handleAnswer,
     retry,
   } = useTrigQuizGame({
-    category: '',
-    problems: problemsDeg,
+    category: category.split(',').filter(Boolean),
+    problems: problems,
     results,
     addAnswerRecord,
     resetResults,
@@ -33,7 +34,7 @@ export default function Page() {
   return (
     <TimeAttack
       title="三角比"
-      duration={60000}
+      duration={6000}
       backPath="/trigQuiz"
       resultPath="/trigQuiz/result"
       problem={selectedProblem ? selectedProblem.question : ''}

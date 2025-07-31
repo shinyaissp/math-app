@@ -6,6 +6,9 @@ import { useCountdown } from './hooks/useCountdown';
 import styles from './TimeAttack.module.css';
 import { useProgress } from './hooks/useProgress';
 import DefaultButton from '@/components/Button/DefaultButton';
+import { motion } from 'framer-motion'
+import { BlockMath } from 'react-katex';
+import { fade } from '@/animation/fade';
 
 const countdownSteps = ['3', '2', '1', 'Start!'];
 
@@ -57,19 +60,21 @@ export default function TimeAttack({ children,
     handleStart();
   }, [handleStart]);
 
-  const progress = useProgress(duration, handleFinish, isRunning, resetFlag);
 
-  const displayText =
-    countdownIndex !== null
-      ? countdownSteps[countdownIndex]
-      : isFinished
-      ? 'FINISH!!'
-      : problem || '';
+  const progress = useProgress(duration, handleFinish, isRunning, resetFlag);
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>{title}タイムアタック</div>
-      <div className={styles.questionBox}>{displayText}</div>
+      <div className={styles.questionBox}>
+        {countdownIndex !== null ? (
+          <motion.div key={countdownIndex} {...fade}>
+            {countdownSteps[countdownIndex]}
+          </motion.div>
+        ): isFinished
+      ? (<motion.div {...fade}>FINISH!!</motion.div>)
+      : <BlockMath math={problem} /> || ''}
+      </div>
       <div className={styles.barWrapper}>
         <div
           className={styles.barFill}

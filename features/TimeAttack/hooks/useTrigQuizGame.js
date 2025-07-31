@@ -11,15 +11,22 @@ export function useTrigQuizGame({
   const [questionIndex, setQuestionIndex] = useState(0)
   const [lastResult, setLastResult] = useState(null)
 
+  // category配列をjoinして依存配列に使う
+  const categoryKey = category.join(',')
+
   const chooseRandomProblem = useCallback(() => {
+    const categories = categoryKey === '' ? [] : categoryKey.split(',')
+
     const filtered =
-      category === '' ? problems : problems.filter(p => p.category === category)
+      categories.length === 0
+        ? problems.filter(p => p.category === '')
+        : problems.filter(p => categories.includes(p.category))
 
     if (filtered.length > 0) {
       const randomIndex = Math.floor(Math.random() * filtered.length)
       setSelectedProblem(filtered[randomIndex])
     }
-  }, [category, problems])
+  }, [categoryKey, problems])
 
   const handleAnswer = useCallback(
     (selectedAnswerId) => {
