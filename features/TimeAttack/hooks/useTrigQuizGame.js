@@ -12,7 +12,9 @@ export function useTrigQuizGame({
   const [lastResult, setLastResult] = useState(null)
 
   const chooseRandomProblem = useCallback(() => {
-    const filtered = problems.filter(p => p.category === category)
+    const filtered =
+      category === '' ? problems : problems.filter(p => p.category === category)
+
     if (filtered.length > 0) {
       const randomIndex = Math.floor(Math.random() * filtered.length)
       setSelectedProblem(filtered[randomIndex])

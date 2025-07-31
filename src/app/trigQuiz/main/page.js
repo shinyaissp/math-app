@@ -23,7 +23,7 @@ export default function Page() {
     handleAnswer,
     retry,
   } = useTrigQuizGame({
-    category: 'H1',
+    category: '',
     problems: problemsDeg,
     results,
     addAnswerRecord,
