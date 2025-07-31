@@ -32,7 +32,7 @@ export default function Page() {
     const isCorrect = selectedAnswerId === selectedProblem.correctAnswerId
 
     const answerRecord = {
-      questionNumber: questionIndex + 1, // 表示用は +1
+      questionNumber: questionIndex + 1,
       question: selectedProblem.question,
       correctAnswerId: selectedProblem.correctAnswerId,
       selectedAnswerId,
@@ -41,7 +41,7 @@ export default function Page() {
 
     addAnswerRecord(answerRecord)
     setLastResult(answerRecord)
-    setQuestionIndex(prev => prev + 1) // 問題カウントアップ
+    setQuestionIndex(prev => prev + 1)
     chooseRandomProblem()
   }
   
@@ -50,7 +50,7 @@ export default function Page() {
   return (
     <TimeAttack
       title="三角比"
-      duration={6000}
+      duration={60000}
       backPath="/trigQuiz"
       resultPath="/trigQuiz/result"
       problem={selectedProblem ? selectedProblem.question : ''}

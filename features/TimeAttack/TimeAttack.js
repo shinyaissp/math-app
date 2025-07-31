@@ -64,7 +64,7 @@ export default function TimeAttack({ children,
       ? countdownSteps[countdownIndex]
       : isFinished
       ? 'FINISH!!'
-      : problem || 'Loading...';
+      : problem || '';
 
   return (
     <div className={styles.container}>
@@ -78,7 +78,7 @@ export default function TimeAttack({ children,
       </div>
       {children}
       <div className={styles.commentBox}>
-        <p className={styles.comment}>正解数: {correctCount} / {questionNumber > 0 ? questionNumber - 1 : '0'}</p>
+        <p className={styles.comment}>正解数: {correctCount} / {questionNumber > 0 ? questionNumber: '0'}</p>
         {lastResult && (
             <p className={styles.comment}>
               {lastResult.isCorrect ? '正解' : '不正解'}
