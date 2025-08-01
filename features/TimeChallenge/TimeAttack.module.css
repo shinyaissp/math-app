@@ -47,7 +47,7 @@
 }
 
 .commentBox {
-  min-height: 80px; /* 適切な高さを指定して高さの変動を防ぐ */
+  min-height: 80px;
   margin-bottom: 10px;
 }
 

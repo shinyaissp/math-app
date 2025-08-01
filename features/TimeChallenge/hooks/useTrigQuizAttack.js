@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from 'react'
 
-export function useTrigQuizGame({
+export function useTrigQuizAttack({
   category,
   problems,
   results,
   addAnswerRecord,
   resetResults,
 }) {
+  
   const [selectedProblem, setSelectedProblem] = useState(null)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [lastResult, setLastResult] = useState(null)
 
-  // category配列をjoinして依存配列に使う
   const categoryKey = category.join(',')
 
   const chooseRandomProblem = useCallback(() => {
@@ -57,6 +57,7 @@ export function useTrigQuizGame({
     chooseRandomProblem()
   }, [resetResults, chooseRandomProblem])
 
+  
   useEffect(() => {
     chooseRandomProblem()
     resetResults()

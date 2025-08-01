@@ -22,7 +22,9 @@
 .radioGroup {
   display: flex;
   gap: 1rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .radioButton {
@@ -48,16 +50,17 @@
 }
 
 .radioInput:checked + .radioButton {
-  background-color: #60a5fa;
+  background-color: #8cc0ff;
   color: rgb(53, 53, 53);
   font-size: 1.2rem;
   font-weight: bold;
   border-color: #2d4d74;
 }
+
 .checkboxGroup {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -81,7 +84,7 @@
 }
 
 .checked {
-  background-color: #60a5fa;
+  background-color: #8cc0ff;
   border-color: #2d4d74;
   color: rgb(53, 53, 53);
   font-weight: bold;
@@ -135,12 +138,38 @@
 /* ▼ スマホ対応 */
 @media (max-width: 768px) {
   .title {
-    height: 25vh;
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    height: 10vh;
+    margin-bottom: 0px;
   }
+
   .comment {
-    margin: 30px auto 10px;
-    font-size: 2rem;
-    font-weight: bold;
-    color:antiquewhite; 
+    margin: 10px auto 10px;
+    font-size: 1.2rem;
+  }
+
+  .radioGroup {
+    margin-top: 0.5rem;
+  }
+
+  .radioButton {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .radioInput:checked + .radioButton {
+    font-size: 0.75rem;
+  }
+  .checkboxGroup {
+    margin-bottom: 1.5rem;
+  }
+
+  .checkboxLabel {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    width: 8rem;
+    height: auto;
   }
 }

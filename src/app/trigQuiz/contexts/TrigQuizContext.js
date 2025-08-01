@@ -6,6 +6,7 @@ const TrigQuizContext = createContext(null)
 
 export const TrigQuizProvider = ({ children }) => {
   const [results, setResults] = useState([])
+  const [trialTime, setTrialTime] = useState(null);
 
   const addAnswerRecord = (record) => {
     setResults(prev => [...prev, record])
@@ -13,10 +14,11 @@ export const TrigQuizProvider = ({ children }) => {
 
   const resetResults = useCallback(() => {
     setResults([])
+    setTrialTime(null); 
   }, [])
 
   return (
-    <TrigQuizContext.Provider value={{ results, addAnswerRecord, resetResults }}>
+    <TrigQuizContext.Provider value={{ results, addAnswerRecord, resetResults, trialTime, setTrialTime }}>
       {children}
     </TrigQuizContext.Provider>
   )
