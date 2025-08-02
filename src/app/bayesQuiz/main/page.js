@@ -125,7 +125,7 @@ export default function Page() {
             {/* 一問目の小道選択 */}
             {forksSelected !== null && forksRevealed !== null && forksFinalChoice === null && currentQuestionIndex !== 1 && (
               <motion.div className={styles.additionalSelect} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                <p>{currentQuiz.options[forksRevealed]} の道が塞がれた。選び直しますか？</p>
+                <p>親切な人が {currentQuiz.options[forksRevealed]} の道は出口ではないと教えてくれた。<br/>選び直しますか？</p>
                 <div className={styles.buttonGroup}>
                   {[0, 1, 2].map((i) =>
                     i !== forksRevealed && (
@@ -250,7 +250,7 @@ export default function Page() {
             {/* 一問目の小道選択 */}
             {forksSelected !== null && forksRevealed !== null && forksFinalChoice === null && currentQuestionIndex !== 1 && (
               <motion.div className={styles.additionalSelect} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                <p>{currentQuiz.options[forksRevealed]} の道が塞がれた。選び直しますか？</p>
+                <p>親切な人が{currentQuiz.options[forksRevealed]} の道は出口ではないと教えてくれた。選び直しますか？</p>
                 <div className={styles.buttonGroup}>
                   {[0, 1, 2].map((i) =>
                     i !== forksRevealed && (

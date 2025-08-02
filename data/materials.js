@@ -1,11 +1,11 @@
 export const materials = [
   {
     id: "trig_quiz", 
-    href: "/trigQuiz",
+    href: "/trigRatioChallenge",
     imageUrl: "/trigonometoric.jpg",
     alt: "trig_quiz",
-    title: "三角比タイムアタック",
-    content: "連続で出題される三角比に解答！",
+    title: "三角比チャレンジ",
+    content: "連続で出題される三角比に解答",
     category: "図形と計量",
   },
   {
@@ -17,6 +17,15 @@ export const materials = [
     content: "条件付確率/ベイズの定理のクイズ",
     category: "確率",
   },
+    {
+    id: "polyhedron", 
+    href: "/polyhedron",
+    imageUrl: "/polyhedron.png",
+    alt: "polyhedron",
+    title: "多面体",
+    content: "様々な多面体を動かしてみよう",
+    category: "図形の性質",
+  }, 
   {
     id: "birthday", 
     href: "/birthday",

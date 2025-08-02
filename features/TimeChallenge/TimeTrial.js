@@ -1,15 +1,15 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useCountdown } from './hooks/useCountdown';
-import { useTimeController } from './hooks/useTimeController';
-import styles from './TimeTrial.module.css';
-import DefaultButton from '@/components/Button/DefaultButton';
-import { motion } from 'framer-motion';
-import CountdownDisplay from './components/CountdownDisplay';
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useCountdown } from './hooks/useCountdown'
+import { useTimeController } from './hooks/useTimeController'
+import styles from './TimeTrial.module.css'
+import DefaultButton from '@/components/Button/DefaultButton'
+import { motion } from 'framer-motion'
+import CountdownDisplay from './components/CountdownDisplay'
 
-const countdownSteps = ['3', '2', '1', 'Start!'];
+const countdownSteps = ['3', '2', '1', 'Start!']
 
 export default function TimeTrial({ 
   children,
@@ -22,21 +22,21 @@ export default function TimeTrial({
   onRunningChange,
   onRetry,
   totalCount,
-  answeredCount
+  answeredCount,
 }) {
-  const router = useRouter();
-  const remaining = totalCount - answeredCount;
+  const router = useRouter()
+  const remaining = totalCount - answeredCount
 
-  const [startTime, setStartTime] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [endTime, setEndTime] = useState(null);
+  const [startTime, setStartTime] = useState(null)
+  const [elapsedTime, setElapsedTime] = useState(0)
+  const [endTime, setEndTime] = useState(null)
 
   const [countdownIndex, setCountdownIndex] = useCountdown(countdownSteps, () => {
-    const now = Date.now();
-    setStartTime(now);
-    setElapsedTime(0);
-    setIsRunning(true);
-  });
+    const now = Date.now()
+    setStartTime(now)
+    setElapsedTime(0)
+    setIsRunning(true)
+  })
 
   const {
     isRunning,
@@ -46,50 +46,55 @@ export default function TimeTrial({
     handleFinish,
     handleRetry,
     setIsRunning,
-  } = useTimeController(setCountdownIndex, onRetry);
+  } = useTimeController(setCountdownIndex, onRetry)
 
+  // onRunningChange へ isRunning 状態を伝える
   useEffect(() => {
     if (onRunningChange) {
-      onRunningChange(isRunning);
+      onRunningChange(isRunning)
     }
-  }, [isRunning, onRunningChange]);
+  }, [isRunning, onRunningChange])
 
+  // 初回マウントでカウントダウン開始
   useEffect(() => {
-    handleStart();
-  }, [handleStart]);
+    handleStart()
+  }, [handleStart])
 
+  // 全問回答で終了判定
   useEffect(() => {
     if (remaining === 0 && isRunning && !isFinished) {
-      setEndTime(Date.now());
-      handleFinish();
+      setEndTime(Date.now())
+      handleFinish()
     }
-  }, [remaining, isRunning, isFinished, handleFinish]);
+  }, [remaining, isRunning, isFinished, handleFinish])
 
+  // タイマー処理（10ms間隔で elapsedTime 更新）
   useEffect(() => {
-    let interval = null;
+    let interval = null
 
     if (isRunning && startTime !== null) {
       interval = setInterval(() => {
-        setElapsedTime(Date.now() - startTime);
-      }, 10);
+        setElapsedTime(Date.now() - startTime)
+      }, 10)
     }
 
     return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isRunning, startTime]);
+      if (interval) clearInterval(interval)
+    }
+  }, [isRunning, startTime])
 
+  // リセット時に時間関連stateをクリア
   useEffect(() => {
     if (resetFlag) {
-      setStartTime(null);
-      setEndTime(null);
-      setElapsedTime(0);
+      setStartTime(null)
+      setEndTime(null)
+      setElapsedTime(0)
     }
-  }, [resetFlag]);
+  }, [resetFlag])
 
   const displayTime = (endTime && startTime)
     ? ((endTime - startTime) / 1000).toFixed(2)
-    : (elapsedTime / 1000).toFixed(2);
+    : (elapsedTime / 1000).toFixed(2)
 
   return (
     <div className={styles.container}>
@@ -114,6 +119,7 @@ export default function TimeTrial({
           style={{ width: `${(answeredCount / totalCount) * 100}%` }}
         />
       </div>
+
       <div className={styles.commentBox}>
         {lastResult && (
           <p className={styles.comment}>
@@ -121,10 +127,12 @@ export default function TimeTrial({
           </p>
         )}
         <div className={styles.remaining}>
-          残り: {remaining} / {totalCount} 正解数: {correctCount}
+          残り: {remaining} / {totalCount} 正解数: {correctCount} / {totalCount}
         </div>
       </div>
+
       {children}
+
       <div>
         <DefaultButton onClick={() => router.push(backPath)}>戻る</DefaultButton>
         <DefaultButton onClick={handleRetry}>やり直す</DefaultButton>
@@ -133,5 +141,5 @@ export default function TimeTrial({
         )}
       </div>
     </div>
-  );
+  )
 }

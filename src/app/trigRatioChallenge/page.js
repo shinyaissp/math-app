@@ -17,10 +17,10 @@ export default function Page() {
   const [problemsType, setProblemsType] = useState('deg');
   const [selectedCategories, setSelectedCategories] = useState(['H1']);
   const categories = [
-    { id: 'H0', label: '-360°~-30°' },
-    { id: 'H1', label: '0°~180°' },
-    { id: 'H2', label: '210°~360°' },
-    { id: 'H3', label: '390°~720°' },
+    { id: 'H0', label: '-360° ~ -30°' },
+    { id: 'H1', label: '0° ~ 180°' },
+    { id: 'H2', label: '210° ~ 360°' },
+    { id: 'H3', label: '390° ~ 720°' },
   ];
 
   const handleCategoryChange = (value) => {
@@ -39,7 +39,7 @@ export default function Page() {
   const handleStart = () => {
     const categoryQuery = selectedCategories.length > 0 ? selectedCategories.join(',') : '';
     const query = `?question=${questionsType}&type=${problemsType}&category=${encodeURIComponent(categoryQuery)}`;
-    fadeNavigate('/trigQuiz/main' + query);
+    fadeNavigate('/trigRatioChallenge/main' + query);
   };
 
   return (
@@ -127,7 +127,7 @@ export default function Page() {
           {/* ボタン群 */}
           <div className={styles.buttonWrapper}>
             <DefaultButton onClick={handleStart}>START</DefaultButton>
-            <DefaultButton onClick={() => fadeNavigate('/trigQuiz/result')}>RESULT</DefaultButton>
+            <DefaultButton onClick={() => fadeNavigate('/trigRatioChallenge/result')}>RESULT</DefaultButton>
           </div>
         </GameArea>
       </motion.div>

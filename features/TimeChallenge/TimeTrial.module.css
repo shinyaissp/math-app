@@ -88,6 +88,7 @@
   }
 
   .questionBox {
+    font-size: 2rem;
     width: 90vw; 
     height: 35vw;
     margin-bottom: 2vw;

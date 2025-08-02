@@ -57,7 +57,7 @@ export default function Page() {
         </table>
 
         <div style={{ marginTop: '1rem' }}>
-          <DefaultButton onClick={() => router.push('/trigQuiz')}>
+          <DefaultButton onClick={() => router.push('/trigRatioChallenge')}>
             戻る
           </DefaultButton>
         </div>

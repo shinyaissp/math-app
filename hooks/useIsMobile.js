@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+// PCでGameAre使用、スマホ版でGameAreaを使わない時
 export function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(false);
 
