@@ -52,7 +52,7 @@ export default function Page() {
 
   const commonProps = {
     title: "三角比",
-    backPath: "/trigQuiz",
+    backPath: "/trigRatioChallenge",
     resultPath: "/trigRatioChallenge/result",
     problem: selectedProblem?.question ?? '',
     lastResult,
